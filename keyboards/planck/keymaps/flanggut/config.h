@@ -17,6 +17,8 @@
 #pragma once
 
 #define TAPPING_FORCE_HOLD
+#define PERMISSIVE_HOLD
+#define TAPPING_TERM 170
 
 #ifdef AUDIO_ENABLE
 #    define STARTUP_SONG SONG(PLANCK_SOUND)

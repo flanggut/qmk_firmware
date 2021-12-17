@@ -53,6 +53,13 @@ enum planck_keycodes {
 #define FL_TR LGUI(LSFT(KC_RBRACKET))
 #define FL_Z LCTL_T(KC_Z)
 
+#define FL_H LALT(KC_H)
+#define FL_J LALT(KC_J)
+#define FL_K LALT(KC_K)
+#define FL_L LALT(KC_L)
+#define FL_SCLN LALT(KC_SCLN)
+#define FL_DOT LALT(KC_DOT)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Qwerty
@@ -70,24 +77,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,         KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
     FL_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,         KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT,
     KC_LSFT, FL_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,         KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_QUOT,
-    BACKLIT, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_LCTL, LT(4,KC_SPC), RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+    BACKLIT, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_LCTL,  LT(4,KC_SPC), RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
 /* Lower
  * ,-----------------------------------------------------------------------------------.
  * |   ~  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Del  |  F1  |  F2  |FL_TL |FL_TR |  F5  |  F6  |   _  |   +  |   {  |   }  |      |
+ * | Del  |  F1  |  F2  |FL_TL |FL_TR |  F5  | A-H  | A-J  | A-K  | A-L  | A-;  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO ~ |ISO | | Home | End  |  |   |
+ * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO ~ |ISO | | A-.  | End  |  |   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_planck_grid(
     KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR,    KC_ASTR,    KC_LPRN, KC_RPRN, KC_BSPC,
-    KC_DEL,  KC_F1,   KC_F2,   FL_TL,   FL_TR,   KC_F5,   KC_F6,   KC_UNDS,    KC_PLUS,    KC_LCBR, KC_RCBR, _______,
-    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  S(KC_NUHS), S(KC_NUBS), KC_HOME, KC_END,  KC_PIPE,
+    KC_DEL,  KC_F1,   KC_F2,   FL_TL,   FL_TR,   KC_F5,   FL_H,    FL_J,       FL_K,       FL_L,    FL_SCLN, _______,
+    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  S(KC_NUHS), S(KC_NUBS), FL_DOT,  KC_END,  KC_PIPE,
     _______, _______, _______, _______, _______, _______, _______, _______,    KC_MNXT,    KC_VOLD, KC_VOLU, KC_MPLY
 ),
 
@@ -132,7 +139,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Del  |   `  |  [   |  (   |   )  |   ]  |  *   |   -  |  +   |  =   |  ]   |  \   |
+ * |      |   `  |  [   |  (   |   )  |   ]  |  *   |   -  |  +   |  =   |  >   | Del  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |   ~  |  |   |  {   |   }  |   \  |  F12 |   _  |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -140,10 +147,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_LAYER4] = LAYOUT_planck_grid(
-    KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
-    KC_DEL,  KC_GRV,  KC_LBRC, KC_LPRN, KC_RPRN, KC_RBRC, KC_ASTR, KC_MINS, KC_PLUS, KC_EQL,  KC_RBRC, KC_BSLS,
-    _______, KC_TILD, KC_PIPE, KC_LCBR, KC_RCBR, KC_BSPC, KC_F12,  KC_UNDS, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
+    KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,         KC_BSPC,
+    _______, KC_GRV,  KC_LBRC, KC_LPRN, KC_RPRN, KC_RBRC, KC_ASTR, KC_MINS, KC_PLUS, KC_EQL,  LSFT(KC_DOT), KC_DEL,
+    _______, KC_TILD, KC_PIPE, KC_LCBR, KC_RCBR, KC_BSPC, KC_F12,  KC_UNDS, _______, _______, _______,      _______,
+    _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU,      KC_MPLY
 ),
 
 
